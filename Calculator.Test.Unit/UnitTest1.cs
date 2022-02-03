@@ -18,7 +18,7 @@ namespace Calculator.Test.Unit
         public void AddTwoPositive()
         {
             double a = 4;
-            double b = 5;
+            double b = 6;
             Assert.AreEqual(uut.Add(a, b), a + b);
         }
 
