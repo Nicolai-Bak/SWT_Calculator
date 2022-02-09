@@ -25,7 +25,7 @@ namespace Calculator.Test.Unit
         [Test]
         public void AddTwoNegative()
         {
-            double a = -5;
+            double a = -7;
             double b = -5;
             Assert.AreEqual(uut.Add(a, b), a + b);
         }
