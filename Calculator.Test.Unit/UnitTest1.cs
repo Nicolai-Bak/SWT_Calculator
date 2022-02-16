@@ -20,6 +20,8 @@ namespace Calculator.Test.Unit
             double a = 4;
             double b = 6;
             Assert.AreEqual(uut.Add(a, b), a + b);
+            Assert.AreEqual(uut.Accumulator, a+b);
+
         }
 
         [Test]
@@ -28,6 +30,8 @@ namespace Calculator.Test.Unit
             double a = -7;
             double b = -5;
             Assert.AreEqual(uut.Add(a, b), a + b);
+            Assert.AreEqual(uut.Accumulator, a+b);
+
         }
 
         [Test]
@@ -36,6 +40,8 @@ namespace Calculator.Test.Unit
             double a = 4;
             double b = -5;
             Assert.AreEqual(uut.Add(a, b), a + b);
+            Assert.AreEqual(uut.Accumulator, a+b);
+
         }
 
         [Test]
@@ -44,6 +50,8 @@ namespace Calculator.Test.Unit
             double a = 4;
             double b = 5;
             Assert.AreEqual(uut.Subtract(a, b), a - b);
+            Assert.AreEqual(uut.Accumulator, a-b);
+
         }
 
         [Test]
@@ -52,6 +60,8 @@ namespace Calculator.Test.Unit
             double a = -4;
             double b = -5;
             Assert.AreEqual(uut.Subtract(a, b), a - b);
+            Assert.AreEqual(uut.Accumulator, a - b);
+
         }
 
         [Test]
@@ -60,6 +70,8 @@ namespace Calculator.Test.Unit
             double a = 4;
             double b = -5;
             Assert.AreEqual(uut.Subtract(a, b), a - b);
+            Assert.AreEqual(uut.Accumulator, a - b);
+
         }
 
         [Test]
@@ -68,6 +80,8 @@ namespace Calculator.Test.Unit
             double a = -4;
             double b = 5;
             Assert.AreEqual(uut.Subtract(a, b), a - b);
+            Assert.AreEqual(uut.Accumulator, a - b);
+
         }
 
 
@@ -77,6 +91,8 @@ namespace Calculator.Test.Unit
             double a = 4;
             double b = 5;
             Assert.AreEqual(uut.Multiply(a, b), a * b);
+            Assert.AreEqual(uut.Accumulator, a * b);
+
         }
 
         [Test]
@@ -85,6 +101,8 @@ namespace Calculator.Test.Unit
             double a = -4;
             double b = -5;
             Assert.AreEqual(uut.Multiply(a, b), a * b);
+            Assert.AreEqual(uut.Accumulator, a * b);
+
         }
 
         [Test]
@@ -93,6 +111,8 @@ namespace Calculator.Test.Unit
             double a = 4;
             double b = -5;
             Assert.AreEqual(uut.Multiply(a, b), a * b);
+            Assert.AreEqual(uut.Accumulator, a * b);
+
         }
 
         [Test]
@@ -101,6 +121,8 @@ namespace Calculator.Test.Unit
             double a = -4;
             double b = 5;
             Assert.AreEqual(uut.Multiply(a, b), a * b);
+            Assert.AreEqual(uut.Accumulator, a * b);
+
         }
 
         [Test]
@@ -109,6 +131,8 @@ namespace Calculator.Test.Unit
             double a = 4;
             double b =0;
             Assert.AreEqual(uut.Multiply(a, b), a * b);
+            Assert.AreEqual(uut.Accumulator, a * b);
+
         }
 
         [Test]
@@ -117,6 +141,8 @@ namespace Calculator.Test.Unit
             double a = 4;
             double b = 5;
             Assert.AreEqual(uut.Power(a, b), Math.Pow(a, b));
+            Assert.AreEqual(uut.Accumulator, Math.Pow(a, b));
+
         }
 
         [Test]
@@ -125,6 +151,8 @@ namespace Calculator.Test.Unit
             double a = -4;
             double b = -5;
             Assert.AreEqual(uut.Power(a, b), Math.Pow(a, b));
+            Assert.AreEqual(uut.Accumulator, Math.Pow(a, b));
+
         }
 
         [Test]
@@ -133,6 +161,8 @@ namespace Calculator.Test.Unit
             double a = 4;
             double b = -5;
             Assert.AreEqual(uut.Power(a, b), Math.Pow(a, b));
+            Assert.AreEqual(uut.Accumulator, Math.Pow(a, b));
+
         }
 
         [Test]
@@ -141,6 +171,8 @@ namespace Calculator.Test.Unit
             double a = -4;
             double b = 5;
             Assert.AreEqual(uut.Power(a, b), Math.Pow(a, b));
+            Assert.AreEqual(uut.Accumulator, Math.Pow(a, b));
+
         }
 
         [Test]
@@ -149,6 +181,8 @@ namespace Calculator.Test.Unit
             double a = 4;
             double b = 0;
             Assert.AreEqual(uut.Power(a, b), Math.Pow(a, b));
+            Assert.AreEqual(uut.Accumulator, Math.Pow(a, b));
+
         }
 
         [Test]
@@ -157,6 +191,67 @@ namespace Calculator.Test.Unit
             double a = 0;
             double b = 5;
             Assert.AreEqual(uut.Power(a, b), Math.Pow(a,b));
+            Assert.AreEqual(uut.Accumulator, Math.Pow(a, b));
+
         }
+
+        [Test]
+        public void DivideOneZeroOnePositive()
+        {
+            double a = 0;
+            double b = 5;
+            Assert.AreEqual(uut.Divide(a, b), a/b);
+            Assert.AreEqual(uut.Accumulator, a/b);
+
+        }
+
+        [Test]
+        public void DivideOnePositiveOneZero()
+        {
+            double a = 4;
+            double b = 0;
+            Assert.Throws<ArgumentOutOfRangeException>(() => uut.Divide(a,b));
+            Assert.AreEqual(uut.Accumulator, 0);
+        }
+
+        [Test]
+        public void DivideTwoPositive()
+        {
+            double a = 4;
+            double b = 5;
+            Assert.AreEqual(uut.Divide(a, b), a/b);
+            Assert.AreEqual(uut.Accumulator, a / b);
+
+        }
+
+        [Test]
+        public void ClearAdd()
+        {
+            double a = 4;
+            double b = 5;
+            uut.Add(a, b);
+            uut.Clear();
+            Assert.AreEqual(uut.Accumulator, 0);
+        }
+
+        [Test]
+        public void ClearMultiply()
+        {
+            double a = 4;
+            double b = 5;
+            uut.Multiply(a, b);
+            uut.Clear();
+            Assert.AreEqual(uut.Accumulator, 0);
+        }
+        [Test]
+        public void ClearDivide()
+        {
+            double a = 4;
+            double b = 5;
+            uut.Subtract(a, b);
+            uut.Clear();
+            Assert.AreEqual(uut.Accumulator, 0);
+        }
+
     }
 }
